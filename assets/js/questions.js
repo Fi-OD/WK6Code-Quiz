@@ -17,15 +17,18 @@ let questions = [{question: "The conditions in and if / else statement is enclos
 
 ]
 //this adds the call the question content and answers
-document.querySelector("#question-title").textContent = questions[0].question
-document.querySelector("#answer1").textContent = questions[0].answers[0]
-document.querySelector("#answer2").textContent = questions[0].answers[1]
-document.querySelector("#answer3").textContent = questions[0].answers[2]
-document.querySelector("#answer4").textContent = questions[0].answers[3]
+let currentQuestion =0;
 
+function printQuestion(){
+    document.querySelector("#question-title").textContent = questions[currentQuestion].question
+    document.querySelector("#answer1").textContent = questions[currentQuestion].answers[0]
+    document.querySelector("#answer2").textContent = questions[currentQuestion].answers[1]
+    document.querySelector("#answer3").textContent = questions[currentQuestion].answers[2]
+    document.querySelector("#answer4").textContent = questions[currentQuestion].answers[3]
+}
 
 // when the start button is clicked the start screen div is hidden and the first question and answer options are revealed
-// the timer starts
+
 
 startButton.addEventListener("click", function (){
         console.log("click");
@@ -43,9 +46,7 @@ startButton.addEventListener("click", function (){
 
         },1000)
 
-
-
-       let currentQuestion =0;
+        printQuestion();
 
 })
 
@@ -63,18 +64,29 @@ choices.addEventListener('click', function(event) {
         let correctFeedback = document.querySelector("#feedback");
         correctFeedback.classList.remove("hide");
         document.querySelector("#feedback").innerHTML = "Correct!";
+        // move onto the next question by calling currentQuestion function
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+            printQuestion();
+        }
+        else {
+            showQuestions.classList.add("hide");     
+        }
+        // make questions hidden and high score visible
+
+       
     }
     else{
         console.log('Incorrect');
         let correctFeedback = document.querySelector("#feedback");
         correctFeedback.classList.remove("hide");
-        document.querySelector("#feedback").innerHTML = "Wrong, try again.";
-        //remove 5 second from the timer
-        countDown -=10
+        document.querySelector("#feedback").innerHTML = "Incorrect, please try again.";
+        //remove 5 seconds from the timer
+        countDown -=5
     }
   }
 });
-
+// when the count down reaches 0 stop
 
 
 
