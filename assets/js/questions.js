@@ -7,6 +7,8 @@ let answerButton3 = document.querySelector("#answer3");
 let answerButton4 = document.querySelector("#answer4");
 let answerFeedback = document.querySelector("#feedback");
 
+let countDown = 90
+
 // this is where the data for the quiz is stored
 let questions = [{question: "The conditions in and if / else statement is enclosed within __________ .", answers:[ "1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"], correctAnswer:"answer3" },
 {question:"Array in JavaScript can be used to store ___________ .", answers:[ "1. numbers and strings", "2. other arrays ", "3. booleans", "4. all of the above"], correctAnswer:3 },
@@ -34,6 +36,14 @@ startButton.addEventListener("click", function (){
        hideStart.classList.add("hide");
 
        // start the timer button
+    
+        let intervalId = setInterval(function(){
+            countDown --;
+            timer.innerHTML = countDown
+
+        },1000)
+
+
 
        let currentQuestion =0;
 
@@ -60,6 +70,7 @@ choices.addEventListener('click', function(event) {
         correctFeedback.classList.remove("hide");
         document.querySelector("#feedback").innerHTML = "Wrong, try again.";
         //remove 5 second from the timer
+        countDown -=10
     }
   }
 });
@@ -67,7 +78,7 @@ choices.addEventListener('click', function(event) {
 
 
 
-    /*
+    /*at the end of the loop we need to clear the interval id
 
 //when an answer is clicked a message appears saying if is correct or wrong
 // if #answer[] === correct answer[] add correct answer text to #feedback and continue through loop
