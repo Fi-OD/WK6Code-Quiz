@@ -14,7 +14,7 @@ Screen shot of the quiz landing page
 
 Screen shot of the first question, with the timer counting down and a message alerting when an incorrect answer is selected.
 
-![screen shot of the first question](/assets/Images/StartScreen.jpg)
+![screen shot of the first question](/assets/Images/QuizScreen.jpg)
 
 
 ## Technology
