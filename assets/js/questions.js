@@ -70,9 +70,10 @@ choices.addEventListener('click', function(event) {
             printQuestion();
         }
         else {
-            showQuestions.classList.add("hide");     
+            //TODO: stop the timer and make the remaining time the score
+            //TODO: store the score in the local memory
+            //TODO: make questions hidden and high score visible
         }
-        // make questions hidden and high score visible
 
        
     }
